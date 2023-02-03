@@ -1,3 +1,4 @@
+This is built from:
 <a href="https://github.com/DennyZhang?tab=followers"><img align="right" width="200" height="183" src="https://raw.githubusercontent.com/USDevOps/mywechat-slack-group/master/images/fork_github.png" /></a>
 
 [![Build Status](https://travis-ci.org/dennyzhang/monitor-docker-slack.svg?branch=master)](https://travis-ci.org/dennyzhang/monitor-docker-slack) [![Docker](https://raw.githubusercontent.com/USDevOps/mywechat-slack-group/master/images/docker.png)](https://hub.docker.com/r/denny/monitor-docker-slack/)
@@ -6,8 +7,11 @@
 
 - File me [tickets](https://github.com/DennyZhang/monitor-docker-slack/issues) or star [the repo](https://github.com/DennyZhang/monitor-docker-slack)
 
+
+But has been changed for use with discord webhooks.
+
 # Introduction
-Get Slack Notifications, When Containers Run Into Issues
+Get Discord Notifications, When Containers Run Into Issues
 
 Read more: https://www.dennyzhang.com/docker_monitor
 
@@ -17,15 +21,13 @@ Read more: https://www.dennyzhang.com/docker_monitor
 
 ```curl -XGET --unix-socket /var/run/docker.sock http://localhost/containers/json```
 
-3. Send slack notifications, we get matched of "unhealthy"
+3. Send discord notifications, we get matched of "unhealthy"
 
 # How To Use: Plain Container
-- Specify slack credentials via env
+- Specify discord credentials via env
 
 ```
-export SLACK_CHANNEL="#XXX"
-export SLACK_USERNAME="XXX"
-export SLACK_TOKEN="xoxp-XXX-XXX-XXX-XXXXXXXX"
+export DISCORD_WEBHOOK_URL="https://XXX"
 export MSG_PREFIX="Monitoring On XX.XX.XX.XX"
 ```
 
@@ -52,21 +54,20 @@ version: '2'
 services:
   monitor-docker-slack:
     container_name: monitor-docker-slack
-    image: denny/monitor-docker-slack:latest
+    image: codyfp/monitor-docker-discord:latest
     volumes:
      - /var/run/docker.sock:/var/run/docker.sock
     environment:
-      SLACK_CHANNEL: "#XXX"
-      SLACK_USERNAME: "XXX"
-      SLACK_TOKEN: "xoxp-XXX-XXX-XXX-XXXXXXXX"
+      DISCORD_WEBHOOK_URL: "xoxp-XXX-XXX-XXX-XXXXXXXX"
       MSG_PREFIX: "Monitoring On XX.XX.XX.XX"
+      WHITELISTL: ""
     restart: always
 ```
 
 # More customization
 - Add message prefix for the slack notification
 ```
-export MSG_PREFIX="Docker Env in Denny's env"
+export MSG_PREFIX="Docker Env in Cody's env"
 ```
 <a href="https://www.dennyzhang.com"><img src="https://raw.githubusercontent.com/DennyZhang/monitor-docker-slack/master/images/slack_prefix.png"/> </a>
 
