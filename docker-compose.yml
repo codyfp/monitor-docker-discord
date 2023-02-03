@@ -1,0 +1,12 @@
+version: '1'
+services:
+  monitor-docker-discord:
+    container_name: monitor-docker-discord
+    image: codyfp/monitor-docker-discord:latest
+    volumes:
+     - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      DISCORD_WEBHOOK_URL: "$DISCORD_WEBHOOK_URL"
+      MSG_PREFIX: "$MSG_PREFIX"
+      WHITE_LIST: "$WHITE_LIST"
+    restart: always
