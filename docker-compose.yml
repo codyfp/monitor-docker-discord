@@ -1,4 +1,4 @@
-version: '1'
+version: '2'
 services:
   monitor-docker-discord:
     container_name: monitor-docker-discord
