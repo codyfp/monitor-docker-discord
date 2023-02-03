@@ -67,7 +67,7 @@ services:
 # More customization
 - Add message prefix for the slack notification
 ```
-export MSG_PREFIX="Docker Env in Cody's env"
+export MSG_PREFIX="Docker Env in Denny's env"
 ```
 <a href="https://www.dennyzhang.com"><img src="https://raw.githubusercontent.com/DennyZhang/monitor-docker-slack/master/images/slack_prefix.png"/> </a>
 
